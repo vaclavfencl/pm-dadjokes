@@ -11,8 +11,16 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list *ngIf="favorites.length > 0">
-    <ion-item *ngFor="let joke of favorites">
+  <!-- Search Bar -->
+  <ion-searchbar
+    placeholder="Search jokes"
+    [(ngModel)]="searchTerm"
+    (ionInput)="filterFavorites()">
+  </ion-searchbar>
+
+  <!-- List of Favorites -->
+  <ion-list *ngIf="filteredFavorites.length > 0">
+    <ion-item *ngFor="let joke of filteredFavorites">
       <ion-label>{{ joke }}</ion-label>
       <ion-button color="danger" fill="outline" (click)="removeFavorite(joke)">
         Remove
@@ -20,7 +28,8 @@
     </ion-item>
   </ion-list>
 
-  <p *ngIf="favorites.length === 0" class="empty-state">
-    No favorite jokes yet!
+  <!-- Empty State -->
+  <p *ngIf="filteredFavorites.length === 0" class="empty-state">
+    No matching jokes found.
   </p>
 </ion-content>

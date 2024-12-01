@@ -8,6 +8,8 @@ import { FavoriteStorageService } from '../services/favorite-storage.service';
 })
 export class Tab3Page implements OnInit {
   favorites: string[] = [];
+  filteredFavorites: string[] = [];
+  searchTerm: string = '';
 
   constructor(private favoriteService: FavoriteStorageService) {}
 
@@ -22,8 +24,20 @@ export class Tab3Page implements OnInit {
   async loadFavorites() {
     try {
       this.favorites = await this.favoriteService.getFavorites();
+      this.filteredFavorites = [...this.favorites];
     } catch (error) {
       console.error('Error loading favorites:', error);
+    }
+  }
+
+  filterFavorites() {
+    const term = this.searchTerm.trim().toLowerCase();
+    if (term === '') {
+      this.filteredFavorites = [...this.favorites];
+    } else {
+      this.filteredFavorites = this.favorites.filter((joke) =>
+        joke.toLowerCase().includes(term)
+      );
     }
   }
 
