@@ -27,4 +27,22 @@ export class Tab1Page implements OnInit {
       },
     });
   }
+  
+  /**
+   * Copy the joke text to the clipboard.
+   */
+  copyToClipboard() {
+    if (!this.joke.trim()) {
+      console.error('No joke to copy.');
+      return;
+    }
+    navigator.clipboard.writeText(this.joke).then(
+      () => {
+        console.log('Joke copied to clipboard:', this.joke);
+      },
+      (err) => {
+        console.error('Could not copy joke:', err);
+      }
+    );
+  }
 }

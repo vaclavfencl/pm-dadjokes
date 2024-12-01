@@ -1,13 +1,12 @@
 .button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .half-button {
-    flex: 1; /* Each button takes half the width */
-    margin: 0 5px; /* Add spacing between buttons */
-    --background: var(--ion-color-primary); /* Ensure same color for both buttons */
-    --color: white; /* Text color */
-  }
-  
+  display: flex;
+  align-items: center; /* Align all buttons vertically */
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.half-button {
+  flex: 1; /* These buttons take equal space */
+  margin: 0 5px;
+}
+

@@ -19,12 +19,14 @@
         {{ joke }}
       </ion-card-title>
     </ion-card-header>
-      <ion-card-subtitle>
-        <div class="button-container">
-          <ion-button expand="block" class="half-button" (click)="getNewJoke()">Generate New Joke</ion-button>
-          <ion-button expand="block" class="half-button">Make Favorite</ion-button>
-        </div>
-      </ion-card-subtitle>
+    <ion-card-subtitle>
+      <div class="button-container">
+        <ion-button expand="block" class="half-button" (click)="getNewJoke()">Generate New Joke</ion-button>
+        <ion-button> <ion-icon name="star"></ion-icon></ion-button>
+        <ion-button (click)="copyToClipboard()">
+          <ion-icon name="copy-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-card-subtitle>
   </ion-card>
-
 </ion-content>
