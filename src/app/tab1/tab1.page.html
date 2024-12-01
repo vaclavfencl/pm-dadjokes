@@ -13,4 +13,18 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        {{ joke }}
+      </ion-card-title>
+    </ion-card-header>
+      <ion-card-subtitle>
+        <div class="button-container">
+          <ion-button expand="block" class="half-button" (click)="getNewJoke()">Generate New Joke</ion-button>
+          <ion-button expand="block" class="half-button">Make Favorite</ion-button>
+        </div>
+      </ion-card-subtitle>
+  </ion-card>
+
 </ion-content>
