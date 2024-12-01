@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DadJokeService } from '../services/dad-joke.service';
+import { FavoriteStorageService } from '../services/favorite-storage.service';
 
 @Component({
   selector: 'app-tab1',
@@ -9,14 +10,16 @@ import { DadJokeService } from '../services/dad-joke.service';
 export class Tab1Page implements OnInit {
   joke: string = ''; 
 
-  constructor(private dadJokeService: DadJokeService) {}
+  constructor(
+    private dadJokeService: DadJokeService,
+    private favoriteService: FavoriteStorageService 
+  ) {}
 
   ngOnInit() {
     this.getNewJoke(); 
   }
 
   getNewJoke() {
-
     this.dadJokeService.getRandomJoke().subscribe({
       next: (response) => {
         this.joke = response?.joke || 'No joke found.'; 
@@ -28,9 +31,6 @@ export class Tab1Page implements OnInit {
     });
   }
   
-  /**
-   * Copy the joke text to the clipboard.
-   */
   copyToClipboard() {
     if (!this.joke.trim()) {
       console.error('No joke to copy.');
@@ -44,5 +44,17 @@ export class Tab1Page implements OnInit {
         console.error('Could not copy joke:', err);
       }
     );
+  }
+
+  async makeFavorite() {
+    if (!this.joke.trim()) {
+      console.error('No joke to add to favorites.');
+      return;
+    }
+    try {
+      await this.favoriteService.addFavorite(this.joke); 
+    } catch (error) {
+      console.error('Error adding joke to favorites:', error);
+    }
   }
 }

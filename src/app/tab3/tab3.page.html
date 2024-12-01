@@ -1,16 +1,26 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Oblíbené vtipy
-    </ion-title>
+    <ion-title>Favorite Jokes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Oblíbené vtipy</ion-title>
+      <ion-title size="large">Favorite Jokes</ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <ion-list *ngIf="favorites.length > 0">
+    <ion-item *ngFor="let joke of favorites">
+      <ion-label>{{ joke }}</ion-label>
+      <ion-button color="danger" fill="outline" (click)="removeFavorite(joke)">
+        Remove
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <p *ngIf="favorites.length === 0" class="empty-state">
+    No favorite jokes yet!
+  </p>
 </ion-content>
