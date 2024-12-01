@@ -1,16 +1,39 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Vyhledávání
-    </ion-title>
+    <ion-title>Napiš vlastní dad joke</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Vyhledávání</ion-title>
+      <ion-title size="large">Napiš vlastní vtip</ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Chybí ti nějaký dad joke? Ulož si ho u nás!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Input Field for Joke -->
+      <ion-item>
+        <ion-label position="stacked">Váš vtip:</ion-label>
+        <ion-textarea
+          placeholder="pište sem."
+          [(ngModel)]="userJoke"
+        ></ion-textarea>
+      </ion-item>
+
+      <!-- Save Button -->
+      <ion-button expand="block" (click)="saveUserJoke()">
+        Uložit do oblíbených
+      </ion-button>
+
+      <!-- Success Message -->
+      <p *ngIf="showSuccessMessage" class="success-message">
+        Vtip byl uložen!
+      </p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

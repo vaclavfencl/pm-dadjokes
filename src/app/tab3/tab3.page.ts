@@ -24,7 +24,7 @@ export class Tab3Page implements OnInit {
   async loadFavorites() {
     try {
       this.favorites = await this.favoriteService.getFavorites();
-      this.filteredFavorites = [...this.favorites];
+      this.filterFavorites();
     } catch (error) {
       console.error('Error loading favorites:', error);
     }
