@@ -1,0 +1,7 @@
+{
+  "name": "dad-jokes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
