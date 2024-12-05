@@ -7,14 +7,11 @@ import { FavoriteStorageService } from '../services/favorite-storage.service';
   styleUrls: ['./tab2.page.scss'],
 })
 export class Tab2Page {
-  userJoke: string = ''; // User's joke input
-  showSuccessMessage: boolean = false; // Controls success message visibility
+  userJoke: string = ''; 
+  showSuccessMessage: boolean = false; 
 
   constructor(private favoriteService: FavoriteStorageService) {}
 
-  /**
-   * Save the user's joke to favorites.
-   */
   async saveUserJoke() {
     const joke = this.userJoke.trim();
     if (!joke) {
@@ -23,11 +20,10 @@ export class Tab2Page {
     }
 
     try {
-      await this.favoriteService.addFavorite(joke); // Save joke to favorites
-      this.showSuccessMessage = true; // Show success message
-      this.userJoke = ''; // Clear the input field
+      await this.favoriteService.addFavorite(joke);
+      this.showSuccessMessage = true; 
+      this.userJoke = ''; 
 
-      // Hide the success message after a few seconds
       setTimeout(() => {
         this.showSuccessMessage = false;
       }, 2000);
